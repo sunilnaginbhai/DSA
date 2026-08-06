@@ -12,31 +12,23 @@
 class Solution {
 public:
 
-    int findHeight(TreeNode* root){
+    int findHeight(TreeNode* root,int& daimeter){
          if(root==nullptr){
             return 0;
         }
-        int lh=findHeight(root->left);
-        int rh=findHeight(root->right);
+        int lh=findHeight(root->left,daimeter);
+        int rh=findHeight(root->right,daimeter);
 
-        
+        daimeter=max(daimeter,lh+rh);
+
         return max(lh,rh)+1;
     }
 
-    int maxi=0;
     int diameterOfBinaryTree(TreeNode* root) {
-        if(root==nullptr){
-            return 0;
-        }
-
-        int lheight=findHeight(root->left);
-        int rheight=findHeight(root->right);
-        
-        maxi=max(maxi,lheight+rheight);
-       
-        diameterOfBinaryTree(root->left);
-        diameterOfBinaryTree(root->right);
-    return maxi;
+    
+       int daimeter=0;       
+       findHeight(root,daimeter);
+        return daimeter;
     }
 
 };
