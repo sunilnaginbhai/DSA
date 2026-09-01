@@ -18,18 +18,18 @@ public:
         q.push(root);
 
         while(!q.empty()){
+
             int n=q.size();
             vector<int> travers;
             for(int i=0;i<n;i++){
-             TreeNode* node=q.front();
+            TreeNode* node=q.front();
              q.pop();
-             if(node->left!=NULL) q.push(node->left); 
-             if(node->right!=NULL) q.push(node->right);
-             travers.push_back(node->val);
+               if(node->left!=NULL) q.push(node->left); 
+               if(node->right!=NULL) q.push(node->right);
+               travers.push_back(node->val);
             }
             ans.push_back(travers);
         }
-
         return ans;
         
     }
