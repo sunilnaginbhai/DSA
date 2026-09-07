@@ -11,24 +11,19 @@
  */
 class Solution {
 public:
-
-    int findHeight(TreeNode* root,int& daimeter){
-         if(root==nullptr){
+    int HightTree(TreeNode* root){
+        if(root==NULL){
             return 0;
         }
-        int lh=findHeight(root->left,daimeter);
-        int rh=findHeight(root->right,daimeter);
-
-        daimeter=max(daimeter,lh+rh);
-
-        return max(lh,rh)+1;
+        int leftH=HightTree(root->left);
+        int rightH=HightTree(root->right);
+        int Hight=leftH+rightH;
+        maxi=max(maxi,Hight);
+        return max(leftH,rightH)+1;
     }
-
+    int maxi=INT_MIN;
     int diameterOfBinaryTree(TreeNode* root) {
-    
-       int daimeter=0;       
-       findHeight(root,daimeter);
-        return daimeter;
+        HightTree(root);
+        return maxi;
     }
-
 };
